@@ -1,3 +1,5 @@
+const { v4 } = require("uuid");
+
 const Users = [];
 const Exercises = [];
 
