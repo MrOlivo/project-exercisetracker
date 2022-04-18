@@ -77,4 +77,4 @@ const getLog = (req, res) => {
   });
 };
 
-module.exports = {getAllUsers, newUser, newExcercise, getLog}
+module.exports = { getAllUsers, newUser, newExcercise, getLog };
