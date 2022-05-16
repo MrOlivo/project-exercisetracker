@@ -20,7 +20,7 @@ const newExcercise = (req, res) => {
   let { description, duration, date } = req.body;
   let userId = req.params["_id"];
 
-  if (description == "" || duration <= 1) {
+  if (description === "" || duration <= 1) {
     return res.json({ error: "Description or Duration can not be empty." });
   }
 
@@ -30,7 +30,7 @@ const newExcercise = (req, res) => {
   let { _id, username } = user;
   let formatedDate = new Date(date).toDateString();
 
-  if (formatedDate == "Invalid Date") {
+  if (formatedDate === "Invalid Date") {
     formatedDate = new Date().toDateString();
   }
 
@@ -63,11 +63,17 @@ const getLog = (req, res) => {
     };
   });
 
-  if (from) log = log.filter((ele) => new Date(ele.date) > new Date(from));
+  if (from) {
+    log = log.filter((ele) => new Date(ele.date) > new Date(from));
+  }
 
-  if (to) log = log.filter((ele) => new Date(ele.date) < new Date(to));
+  if (to) {
+    log = log.filter((ele) => new Date(ele.date) < new Date(to));
+  }
 
-  if (!isNaN(limit)) log = log.slice(0, limit);
+  if (!isNaN(limit)){
+    log = log.slice(0, limit);
+  }
 
   res.json({
     _id: user["_id"],
